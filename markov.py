@@ -29,19 +29,13 @@ def makerule(data, context):
 def makestring(rule, length, temp):
     '''Use a given rule to make a string.'''
     oldwords = random.choice(list(rule.keys())).split(' ')  # random starting words
-    # print(oldwords)
     string = ' '.join(oldwords) + ' '
 
     for i in range(length):
         try:
             key = ' '.join(oldwords)
-            # newword = random.choice(rule[key])
             newword = highest_choice(rule[key], temp)
             string += newword + ' '
-
-            # for word in range(len(oldwords)):
-            #     oldwords[word] = oldwords[(word + 1) % len(oldwords)]
-            # oldwords[-1] = newword
             oldwords = oldwords[1:] + [newword]
 
         except KeyError:
@@ -68,9 +62,9 @@ def readdata(name):
 
 
 if __name__ == '__main__':
-    # data = "hi hi boy bye buy buoy boy bye"
-    data = readdata("alice_oz.txt")
-    rule = makerule(data, 1)
+    data = "hi hi boy bye buy buoy boy bye"
+    # data = readdata("alice_oz.txt")
+    rule = makerule(data, 2)
     stats = countrules(rule)
-    string = makestring(stats, 10, 1)
+    string = makestring(stats, 8, 1)
     print(string)

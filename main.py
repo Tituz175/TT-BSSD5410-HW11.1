@@ -16,6 +16,7 @@ def text_gen():
     window_value = int(input("Enter your desire window value: "))
     temperature_value = float(input("Enter your desire temperature value: "))
     word_length = int(input("Enter your desire word length: "))
+    word_length -= window_value
     rule = makerule(data, window_value)
     stats = countrules(rule)
     generated_text = makestring(stats, word_length, temperature_value)
